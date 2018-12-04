@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func star1(values []int64) int64 {
@@ -35,6 +36,8 @@ func star2(values []int64) int64 {
 }
 
 func main() {
+
+	start := time.Now().UnixNano() / int64(time.Microsecond)
 	buf, _ := ioutil.ReadFile("input.txt") // just pass the file name
 
 	lines := strings.Split(string(buf), "\n")
@@ -51,5 +54,9 @@ func main() {
 
 	fmt.Printf("Star 1 answer: %v\n", firstStar)
 	fmt.Printf("Star 2 answer: %v\n", secondStar)
+
+	end := time.Now().UnixNano() / int64(time.Microsecond)
+
+	fmt.Printf("Execution took: %v μs\n", end-start)
 
 }
